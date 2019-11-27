@@ -1,29 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondFragment">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/img1" />
+    android:background="@drawable/background_add_package"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15pt"
+        android:layout_marginHorizontal="6pt"
+        android:layout_marginTop="12pt"
+        android:fontFamily="@font/heebo_regular"
+        android:text="מספר פרטים על החבילה"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="normal" />
+
+    <Spinner android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:prompt="hello"
+        android:background="@drawable/rounded_text"
+        android:layout_gravity="center"
+        android:entries="@array/spinnerItems"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--TextView
         android:id="@+id/textViewNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_weight="1"
         android:gravity="bottom|end"
         android:text="next"
         android:clickable="true"
         android:focusable="true"
-        android:textColor="#40837A" />
+        android:textSize="8pt"
+        android:textColor="#97546544" />
     <TextView
         android:id="@+id/textViewBack"
         android:layout_width="wrap_content"
@@ -33,7 +64,7 @@
         android:gravity="bottom|start"
         android:text="back"
         android:clickable="true"
-        android:focusable="true"
-        android:textColor="#40837A" />
+        android:textSize="8pt"
+        android:textColor="#456765" /-->
 
-</FrameLayout>
+</LinearLayout>

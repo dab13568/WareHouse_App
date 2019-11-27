@@ -3,30 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DB28323C"
+    android:background="@drawable/background_add_package"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".FirstFragment">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/img2" />
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/textViewNext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_weight="1"
-        android:gravity="bottom|end"
-        android:text="next"
-        android:clickable="true"
-        android:focusable="true"
-        android:textColor="#40837A" />
+        android:textSize="15pt"
+        android:layout_marginHorizontal="6pt"
+        android:layout_marginTop="12pt"
+        android:fontFamily="@font/heebo_regular"
+        android:text="מהו מספר הפלאפון של מקבל החבילה?"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="normal" />
 
-
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30pt"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_text"
+        android:drawableRight="@drawable/ic_phone"
+        android:drawablePadding="12dp"
+        android:hint="מספר פלאפון"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:padding="7dp"
+        android:textColor="#040E69" />
 </LinearLayout>

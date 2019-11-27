@@ -22,7 +22,8 @@
         android:layout_weight="1"
         android:gravity="bottom|start"
         android:text="back"
-        android:textColor="#40837A" />
+        android:textSize="8pt"
+        android:textColor="#ffffff" />
 
 
 </FrameLayout>
