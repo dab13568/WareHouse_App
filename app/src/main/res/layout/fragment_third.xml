@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThirdFragment">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/img3" />
-
+    android:background="@drawable/background_add_package"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/textViewBack"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_weight="1"
-        android:gravity="bottom|start"
-        android:text="back"
+        android:textSize="17pt"
+        android:layout_marginHorizontal="6pt"
+        android:layout_marginTop="12pt"
+        android:fontFamily="@font/heebo_regular"
+        android:text="מיקום החבילה"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="normal" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="8pt"
-        android:textColor="#ffffff" />
+        android:layout_marginHorizontal="4pt"
+        android:fontFamily="@font/heebo_medium"
+        android:text="במידה ולא תבחר כתובת, מיקום המחסן יבחר על פי מיקומך הנוכחי"
+        android:textAlignment="center"
+        android:textColor="#D5DDEB"
+        android:textStyle="normal" />
 
 
-</FrameLayout>
+
+</LinearLayout>

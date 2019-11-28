@@ -19,14 +19,36 @@
         android:textColor="#ffffff"
         android:textStyle="normal" />
 
-    <Spinner android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:drawSelectorOnTop="true"
-        android:prompt="hello"
+    <Spinner android:id="@+id/package_type"
+        android:layout_width="120pt"
         android:background="@drawable/rounded_text"
         android:layout_gravity="center"
-        android:entries="@array/spinnerItems"
+        android:padding="6dp"
+        android:layout_marginTop="22pt"
+        android:textAlignment="center"
+        android:entries="@array/package_type"
         android:layout_height="wrap_content" />
+
+    <Spinner android:id="@+id/breakable"
+        android:layout_width="120pt"
+        android:background="@drawable/rounded_text"
+        android:layout_gravity="center"
+        android:padding="6dp"
+        android:layout_marginTop="13pt"
+        android:textAlignment="center"
+        android:entries="@array/breakable"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="120pt"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13pt"
+        android:hint="משקל החבילה בקילוגרמים"
+        android:inputType="number"
+        android:layout_gravity="center"
+        android:padding="6dp"
+        android:background="@drawable/rounded_text"
+        android:drawableRight="@drawable/ic_weight"/>
 
 
 

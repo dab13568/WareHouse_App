@@ -30,12 +30,12 @@ public class FirstFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_first, container, false);
         viewPager=getActivity().findViewById(R.id.viewPager);
-        next=view.findViewById(R.id.textViewNext);
-        next.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View view){
-                viewPager.setCurrentItem(1);
-            }
-        });
+//        next=view.findViewById(R.id.textViewNext);
+//        next.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view){
+//                viewPager.setCurrentItem(1);
+//            }
+//        });
         return view;
     }
 

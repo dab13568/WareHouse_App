@@ -14,7 +14,7 @@
         android:layout_marginHorizontal="6pt"
         android:layout_marginTop="12pt"
         android:fontFamily="@font/heebo_regular"
-        android:text="מהו מספר הפלאפון של מקבל החבילה?"
+        android:text="מהם פרטי מקבל החבילה?"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textStyle="normal" />
@@ -31,6 +31,23 @@
         android:drawableRight="@drawable/ic_phone"
         android:drawablePadding="12dp"
         android:hint="מספר פלאפון"
+        android:inputType="textPersonName"
+        android:maxLength="10"
+        android:padding="7dp"
+        android:textColor="#040E69" />
+
+    <EditText
+        android:id="@+id/name_addressee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10pt"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_text"
+        android:drawableRight="@drawable/ic_person"
+        android:drawablePadding="12dp"
+        android:hint="שם מקבל החבילה"
         android:inputType="textPersonName"
         android:maxLength="10"
         android:padding="7dp"

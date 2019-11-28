@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="spinnerItems">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
+    <string-array name="package_type">
+        <item>סוג החבילה</item>
+        <item>חבילה גדולה</item>
+        <item>חבילה קטנה</item>
+        <item>מעטפה</item>
+    </string-array>
+
+    <string-array name="breakable">
+        <item>תוכן שביר</item>
+        <item>תוכן החבילה שביר</item>
+        <item>תוכן החבילה לא שביר</item>
     </string-array>
 </resources>
