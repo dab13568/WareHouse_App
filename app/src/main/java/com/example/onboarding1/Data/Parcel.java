@@ -1,7 +1,7 @@
 package com.example.onboarding1.Data;
 
 // comment
-public class Parcel {
+public class Parcel{
     public enum Type{
         Envelope,SmallPackage, LargePackage
     }
