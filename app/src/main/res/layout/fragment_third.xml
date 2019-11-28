@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_add_package"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -28,7 +27,4 @@
         android:textAlignment="center"
         android:textColor="#D5DDEB"
         android:textStyle="normal" />
-
-
-
 </LinearLayout>
