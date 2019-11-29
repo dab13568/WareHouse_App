@@ -1,11 +1,17 @@
 package com.example.onboarding1;
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +20,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -37,7 +47,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_second, container, false);
+        final View view= inflater.inflate(R.layout.fragment_second, container, false);
         viewPager=getActivity().findViewById(R.id.viewPager);
 
         type_package = view.findViewById(R.id.package_type);
@@ -46,6 +56,55 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type_package.setAdapter(arrayAdapter);
         type_package.setOnItemSelectedListener(this);
+
+        final MainActivity mainActivity=(MainActivity)getActivity();
+
+
+        final TextView textView=view.findViewById(R.id.address);
+        SharedPreferences prefs = getContext().getSharedPreferences("maps", MODE_PRIVATE);
+        final String name = prefs.getString("add", "GPS Error");
+
+        textView.setText(name);
+
+
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Snackbar.make(mainActivity.findViewById(android.R.id.content),name, Snackbar.LENGTH_LONG).show();
+//                           }
+//        }, 2000);
+
+
+
+        mainActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            final TextView textView=view.findViewById(R.id.address);
+                            SharedPreferences prefs = getContext().getSharedPreferences("maps", MODE_PRIVATE);
+                            String name = prefs.getString("add", "GPS Error");
+                            textView.setText(name);                     }
+                    }, 0,2000);
+                }
+
+            }
+        });
+
+//        mainActivity.runOnUiThread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//
+//                // Stuff that updates the UI
+//
+//            }
+//        });
+
+
 
 
 
@@ -71,6 +130,18 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             {
             String text = parent.getItemAtPosition(position).toString();
             Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void turnGPSOn(){
+        String provider = Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+
+        if(!provider.contains("gps")){ //if gps is disabled
+            final Intent poke = new Intent();
+            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
+            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
+            poke.setData(Uri.parse("3"));
+            getContext().sendBroadcast(poke);
         }
     }
 

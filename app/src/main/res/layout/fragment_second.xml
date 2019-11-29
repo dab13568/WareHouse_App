@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="15pt"
-        android:layout_marginHorizontal="6pt"
         android:layout_marginTop="12pt"
+        android:layout_marginHorizontal="6pt"
         android:fontFamily="@font/heebo_regular"
         android:text="מספר פרטים על החבילה"
         android:textAlignment="center"
@@ -46,9 +46,22 @@
         android:inputType="number"
         android:layout_gravity="center"
         android:padding="6dp"
-        android:background="@drawable/rounded_text"
-        android:drawableRight="@drawable/ic_weight"/>
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/ic_weight"
+        android:background="@drawable/rounded_text" />
 
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="120pt"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13pt"
+            android:inputType="number"
+            android:drawableRight="@drawable/ic_location_on"
+            android:drawablePadding="5dp"
+            android:layout_gravity="center"
+            android:padding="6dp"
+            android:background="@drawable/rounded_text" />
 
 
 
