@@ -79,12 +79,25 @@
 
     <ImageButton
         android:id="@+id/add_package"
-        android:layout_marginTop="20pt"
+        android:layout_marginTop="90dp"
         android:background="@drawable/circle_button"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/ic_check"
+        android:src="@drawable/error"
         android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/missing_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:fontFamily="@font/heebo_bold"
+        android:text="חסרים פרטים!"
+        android:textColor="#FF0000"
+        android:textStyle="normal" />
+
 
 
 

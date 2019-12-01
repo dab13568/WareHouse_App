@@ -41,6 +41,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     EditText weight;
     ImageButton add_package;
     MainActivity mainActivity;
+    TextView error_message;
 
 
     public SecondFragment() {
@@ -59,7 +60,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         breakable=view.findViewById(R.id.breakable);
         type_package=view.findViewById(R.id.package_type);
         address = view.findViewById(R.id.address);
-
+        error_message=view.findViewById(R.id.missing_details);
 
         add_package.setEnabled(false);
 
@@ -153,24 +154,51 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         else
             MainActivity.valid_address = true;
 
-        if (weight.getText().toString()!="")
-            MainActivity.valid_weight=true;
+        if (weight.getText().toString() != "")
+            MainActivity.valid_weight = true;
         else
-            MainActivity.valid_weight=false;
+            MainActivity.valid_weight = false;
 
-        if(mainActivity.valid())
-        {
+        if (mainActivity.valid()) {
             add_package.setEnabled(true);
             add_package.setImageResource(R.drawable.checked);
-
+            error_message.setVisibility(View.GONE);
         }
-        else add_package.setEnabled(false);
+
+        else
+        {
+            add_package.setEnabled(false);
+            error_message.setVisibility(View.VISIBLE);
+            add_package.setImageResource(R.drawable.error);
+        }
+
     }
 
 
     @Override
     public void afterTextChanged(Editable s) {
+        if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
+            MainActivity.valid_address = false;
+        else
+            MainActivity.valid_address = true;
 
+        if (weight.getText().toString() != "")
+            MainActivity.valid_weight = true;
+        else
+            MainActivity.valid_weight = false;
+
+        if (mainActivity.valid()) {
+            add_package.setEnabled(true);
+            add_package.setImageResource(R.drawable.checked);
+            error_message.setVisibility(View.GONE);
+        }
+
+        else
+        {
+            add_package.setEnabled(false);
+            error_message.setVisibility(View.VISIBLE);
+            add_package.setImageResource(R.drawable.error);
+        }
     }
 
 }
