@@ -1,212 +1,85 @@
 package com.example.onboarding1;
 
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import static android.content.Context.MODE_PRIVATE;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SecondFragment extends Fragment implements AdapterView.OnItemSelectedListener, TextWatcher {
+public class SecondFragment extends Fragment implements AdapterView.OnItemSelectedListener
+{
 
     ViewPager viewPager;
     TextView next;
     TextView back;
     Spinner type_package;
-    Spinner breakable;
-    static TextView address;
-    static SharedPreferences prefs;
-    EditText weight;
-    ImageButton add_package;
-    MainActivity mainActivity;
-    TextView error_message;
-
+    public interface IData{
+        public void setString(String str);
+    }
     public SecondFragment() {
         // Required empty public constructor
     }
 
+//ghjhjh
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_second, container, false);
-        viewPager = getActivity().findViewById(R.id.viewPager);
+        View view= inflater.inflate(R.layout.fragment_second, container, false);
+        viewPager=getActivity().findViewById(R.id.viewPager);
 
-        weight = view.findViewById(R.id.weight);
-        add_package=view.findViewById(R.id.add_package);
-        breakable=view.findViewById(R.id.breakable);
-        type_package=view.findViewById(R.id.package_type);
-        address = view.findViewById(R.id.address);
-        error_message=view.findViewById(R.id.missing_details);
-        back=view.findViewById(R.id.textViewBack);
+        type_package = view.findViewById(R.id.package_type);
 
-        add_package.setEnabled(false);
-
-        //sign up the fields to Text/selection Changed
-        breakable.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> arrayAdapter=ArrayAdapter.createFromResource(getContext(), R.array.package_type,android.R.layout.simple_spinner_item);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type_package.setAdapter(arrayAdapter);
         type_package.setOnItemSelectedListener(this);
-        address.addTextChangedListener(this);
-        weight.addTextChangedListener(this);
-
-        mainActivity = (MainActivity) getActivity();
-
-        //put the address in the fragment
-        prefs = getContext().getSharedPreferences("maps", MODE_PRIVATE);
-        final String name = prefs.getString("add", "GPS Error");
-        address.setText(name);
-        address = view.findViewById(R.id.address);
-
-        //change the color of the address
-        if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FF0000"));
-        } else {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FFffffff"));
-        }
+        Bundle b= getArguments();
+        String kuku=b.getString("str");
 
 
 
-        add_package.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent =new Intent(getActivity(), delivered_activity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-        });
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                viewPager.setCurrentItem(0);
-            }
-        });
-
-
+//        next=view.findViewById(R.id.textViewNext);
+//        next.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view){
+//                viewPager.setCurrentItem(2);
+//            }
+//            });
+//        back=view.findViewById(R.id.textViewBack);
+//        back.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View view){
+//                viewPager.setCurrentItem(0);
+//            }
+//        });
         return view;
-    }
-
-
-    //change the value if the address
-    public static void sync() {
-        String name = prefs.getString("add", "GPS Error");
-        address.setText(name);
-
-        if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FF0000"));
-        } else {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FFffffff"));
-        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-        switch (parent.getId()) {
-            case R.id.package_type:
-                if (parent.getItemAtPosition(position).toString() == "סוג החבילה")
-                    MainActivity.valid_packagetype = false;
-                else {
-                    //String text = parent.getItemAtPosition(position).toString();
-                    MainActivity.valid_packagetype = true;
-                }
-            case R.id.breakable:
-                if (parent.getItemAtPosition(position)=="תוכן שביר")
-                    MainActivity.valid_packagetype = false;
-                else
-                    MainActivity.valid_packagetype = true;
+        if(parent.getItemAtPosition(position).toString().equals("סוג החבילה"));
+        else
+            {
+            String text = parent.getItemAtPosition(position).toString();
+            Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         }
     }
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-    }
-
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
-            MainActivity.valid_address = false;
-        else
-            MainActivity.valid_address = true;
-
-        if (weight.getText().toString() != "")
-            MainActivity.valid_weight = true;
-        else
-            MainActivity.valid_weight = false;
-
-        if (mainActivity.valid()) {
-            add_package.setEnabled(true);
-            add_package.setImageResource(R.drawable.checked);
-            error_message.setVisibility(View.GONE);
-        }
-
-        else
-        {
-            add_package.setEnabled(false);
-            error_message.setVisibility(View.VISIBLE);
-            add_package.setImageResource(R.drawable.error);
-        }
-
-    }
-
-
-    @Override
-    public void afterTextChanged(Editable s) {
-        if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
-            MainActivity.valid_address = false;
-        else
-            MainActivity.valid_address = true;
-
-        if (weight.getText().toString() != "")
-            MainActivity.valid_weight = true;
-        else
-            MainActivity.valid_weight = false;
-
-        if (mainActivity.valid()) {
-            add_package.setEnabled(true);
-            add_package.setImageResource(R.drawable.checked);
-            error_message.setVisibility(View.GONE);
-        }
-
-        else
-        {
-            add_package.setEnabled(false);
-            error_message.setVisibility(View.VISIBLE);
-            add_package.setImageResource(R.drawable.error);
-        }
-    }
-
 }
