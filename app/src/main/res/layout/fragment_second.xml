@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@drawable/background_add_package"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
@@ -9,11 +10,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15pt"
+        android:textSize="17pt"
         android:layout_marginTop="12pt"
         android:layout_marginHorizontal="6pt"
         android:fontFamily="@font/heebo_regular"
-        android:text="מספר פרטים על החבילה"
+        android:text="תוכן החבילה"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textStyle="normal" />
@@ -23,7 +24,7 @@
         android:background="@drawable/rounded_text"
         android:layout_gravity="center"
         android:padding="6dp"
-        android:layout_marginTop="22pt"
+        android:layout_marginTop="30pt"
         android:textAlignment="center"
         android:entries="@array/package_type"
         android:layout_height="wrap_content" />
@@ -39,6 +40,7 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/weight"
         android:layout_width="120pt"
         android:layout_height="wrap_content"
         android:layout_marginTop="13pt"
@@ -46,36 +48,47 @@
         android:inputType="number"
         android:layout_gravity="center"
         android:padding="6dp"
+        android:textColor="#ffffff"
         android:drawablePadding="5dp"
-        android:drawableRight="@drawable/ic_weight"
         android:background="@drawable/rounded_text" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="6pt"
+        android:layout_marginTop="20pt"
+        android:layout_marginRight="24pt"
+        android:fontFamily="@font/heebo_bold"
+        android:text="מיקום נוכחי של החבילה:"
+        android:textColor="#ffffff"
+        android:textStyle="normal" />
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="120pt"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13pt"
-            android:inputType="number"
-            android:drawableRight="@drawable/ic_location_on"
-            android:drawablePadding="5dp"
-            android:layout_gravity="center"
-            android:padding="6dp"
-            android:background="@drawable/rounded_text" />
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="120pt"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5pt"
+        android:inputType="number"
+        android:textDirection="anyRtl"
+        android:drawableRight="@drawable/ic_location_on"
+        android:drawablePadding="5dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/heebo_bold"
+        android:padding="6dp"
+        android:textColor="#ffffff"/>
+
+    <ImageButton
+        android:id="@+id/add_package"
+        android:layout_marginTop="20pt"
+        android:background="@drawable/circle_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_check"
+        android:layout_gravity="center"/>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+</LinearLayout>
 
 
     <!--TextView
@@ -101,4 +114,3 @@
         android:textSize="8pt"
         android:textColor="#456765" /-->
 
-</LinearLayout>

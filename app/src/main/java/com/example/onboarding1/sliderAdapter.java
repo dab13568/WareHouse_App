@@ -9,20 +9,25 @@ public class sliderAdapter extends FragmentPagerAdapter {
         super(fm);
     }
 
+    Fragment fragment1;
+    Fragment fragment2;
+
     @Override
 
-    public Fragment getItem(int position) {
+    public Fragment getItem(int position)
+    {
+        fragment1 = new FirstFragment();
+        fragment2 = new SecondFragment();
         switch(position){
-            case 0: return new FirstFragment();
-            case 1:return new SecondFragment();
-            case 2: return new ThirdFragment();
+            case 0: return fragment1;
+            case 1: return fragment2;
             default: return null;
         }
-
     }
+
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }
