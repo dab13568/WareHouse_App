@@ -37,6 +37,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     Spinner type_package;
     Spinner breakable;
     static TextView address;
+    static TextView address_icon;
     static SharedPreferences prefs;
     EditText weight;
     ImageButton add_package;
@@ -59,6 +60,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         breakable=view.findViewById(R.id.breakable);
         type_package=view.findViewById(R.id.package_type);
         address = view.findViewById(R.id.address);
+        address_icon = view.findViewById(R.id.address_icon);
         error_message=view.findViewById(R.id.missing_details);
         back=view.findViewById(R.id.textViewBack);
 
@@ -80,10 +82,10 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
         //change the color of the address
         if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
+            address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
             address.setTextColor(Color.parseColor("#FF0000"));
         } else {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
+            address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
             address.setTextColor(Color.parseColor("#FFffffff"));
         }
 
@@ -117,11 +119,11 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address.setText(name);
 
         if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
+            address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
             address.setTextColor(Color.parseColor("#FF0000"));
         } else {
-            address.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FFffffff"));
+            address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
+            address.setTextColor(Color.parseColor("#FFCEFDCF"));
         }
     }
 

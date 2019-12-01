@@ -188,8 +188,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             //signup.setEnabled(true);
         } catch (IOException e) {
+
             Snackbar.make(findViewById(android.R.id.content), "לא ניתן למצוא את מיקומך הנוכחי", Snackbar.LENGTH_LONG).show();
-            //signup.setEnabled(false);
+            SharedPreferences.Editor editor = getSharedPreferences("maps", MODE_PRIVATE).edit();
+            editor.clear();
+            editor.putString("add","לא ניתן למצוא את מיקומך הנוכחי");
+            editor.commit();
+            SecondFragment.sync();
         }
 
         markerOptions.title("מיקומך הנוכחי");
@@ -238,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     public boolean valid()
     {
-
         return valid_phone && valid_name && valid_packagetype && valid_address && valid_weight && valid_breakable;
     }
 
