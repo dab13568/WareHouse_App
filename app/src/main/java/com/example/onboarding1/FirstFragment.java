@@ -74,6 +74,12 @@ public class FirstFragment extends Fragment implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
+        if(name.getText().toString() == "")
+            MainActivity.valid_name=false;
+        else MainActivity.valid_name=true;
 
+        if(!(phone.getText().toString().matches("05[0-9]{8}")))
+            MainActivity.valid_phone=false;
+        else MainActivity.valid_phone=true;
     }
 }
