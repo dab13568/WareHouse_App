@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/background_add_package"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
@@ -99,22 +98,6 @@
         android:textStyle="normal" />
 
 
-
-
-</LinearLayout>
-
-
-    <!--TextView
-        android:id="@+id/textViewNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:gravity="bottom|end"
-        android:text="next"
-        android:clickable="true"
-        android:focusable="true"
-        android:textSize="8pt"
-        android:textColor="#97546544" />
     <TextView
         android:id="@+id/textViewBack"
         android:layout_width="wrap_content"
@@ -124,6 +107,12 @@
         android:gravity="bottom|start"
         android:text="back"
         android:clickable="true"
-        android:textSize="8pt"
-        android:textColor="#456765" /-->
+        android:textSize="9pt"
+        android:textColor="#ffffff" />
+
+</LinearLayout>
+
+
+
+
 

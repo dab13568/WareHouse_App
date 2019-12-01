@@ -43,7 +43,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     MainActivity mainActivity;
     TextView error_message;
 
-
     public SecondFragment() {
         // Required empty public constructor
     }
@@ -61,6 +60,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         type_package=view.findViewById(R.id.package_type);
         address = view.findViewById(R.id.address);
         error_message=view.findViewById(R.id.missing_details);
+        back=view.findViewById(R.id.textViewBack);
 
         add_package.setEnabled(false);
 
@@ -98,6 +98,14 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
                 getActivity().finish();
             }
         });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(0);
+            }
+        });
+
 
         return view;
     }

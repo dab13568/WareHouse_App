@@ -36,17 +36,18 @@ public class FirstFragment extends Fragment implements TextWatcher {
         viewPager=getActivity().findViewById(R.id.viewPager);
         name=view.findViewById(R.id.name);
         phone=view.findViewById(R.id.phone_number);
+        next=view.findViewById(R.id.textViewNext);
 
         name.addTextChangedListener(this);
         phone.addTextChangedListener(this);
 
 
-//        next=view.findViewById(R.id.textViewNext);
-//        next.setOnClickListener(new View.OnClickListener(){
-//            public void onClick(View view){
-//                viewPager.setCurrentItem(1);
-//            }
-//        });
+        next=view.findViewById(R.id.textViewNext);
+        next.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                viewPager.setCurrentItem(1);
+            }
+        });
         return view;
     }
 
