@@ -256,9 +256,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             Intent intent =new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
-            Animatoo.animateShrink(this);
+            Animatoo.animateSplit(this);
             super.finish();
-
         }
         else
         {

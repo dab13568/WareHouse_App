@@ -71,6 +71,7 @@ public class FirstFragment extends Fragment implements TextWatcher {
             MainActivity.valid_phone = true;
             phone.setTextColor(Color.parseColor("#040E69"));
         }
+        SecondFragment.valid();
     }
 
     @Override
@@ -87,6 +88,6 @@ public class FirstFragment extends Fragment implements TextWatcher {
             MainActivity.valid_phone=true;
             phone.setTextColor(Color.parseColor("#040E69"));
         }
-
+        SecondFragment.valid();
     }
 }
