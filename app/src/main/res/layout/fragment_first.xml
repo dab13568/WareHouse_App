@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="30pt"
+            android:layout_marginTop="40pt"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/rounded_text"
@@ -36,7 +36,7 @@
             android:drawablePadding="12dp"
             android:maxLength="10"
             android:hint="מספר פלאפון"
-            android:inputType="textPersonName"
+            android:inputType="number"
             android:padding="7dp"
             android:textColor="#040E69" />
 
@@ -69,6 +69,6 @@
         android:padding="15dp"
         android:layout_alignParentBottom="true"
         android:text="next"
-        android:textColor="#ffffff"
+        android:textColor="#CEFDCF"
         android:textSize="9pt" />
 </RelativeLayout>
