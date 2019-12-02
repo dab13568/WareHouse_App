@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="17pt"
-        android:layout_marginHorizontal="6pt"
-        android:layout_marginTop="12pt"
-        android:fontFamily="@font/heebo_regular"
-        android:text="פרטי מקבל החבילה"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textStyle="normal" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30pt"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_text"
-        android:drawableRight="@drawable/ic_phone"
-        android:drawablePadding="12dp"
-        android:maxLength="10"
-        android:hint="מספר פלאפון"
-        android:inputType="textPersonName"
-        android:padding="7dp"
-        android:textColor="#040E69" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="17pt"
+            android:layout_marginHorizontal="6pt"
+            android:layout_marginTop="12pt"
+            android:fontFamily="@font/heebo_regular"
+            android:text="פרטי מקבל החבילה"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textStyle="normal" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10pt"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rounded_text"
-        android:drawableRight="@drawable/ic_person"
-        android:drawablePadding="12dp"
-        android:hint="שם הנמען"
-        android:inputType="textPersonName"
-        android:maxLength="10"
-        android:padding="7dp"
-        android:textColor="#040E69" />
+        <EditText
+            android:id="@+id/phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30pt"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_text"
+            android:drawableRight="@drawable/ic_phone"
+            android:drawablePadding="12dp"
+            android:maxLength="10"
+            android:hint="מספר פלאפון"
+            android:inputType="textPersonName"
+            android:padding="7dp"
+            android:textColor="#040E69" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10pt"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_text"
+            android:drawableRight="@drawable/ic_person"
+            android:drawablePadding="12dp"
+            android:hint="שם הנמען"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:padding="7dp"
+            android:textColor="#040E69" />
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_weight="1"
+        android:layout_alignParentRight="true"
         android:clickable="true"
-        android:layout_marginTop="240dp"
-        android:gravity="bottom|end"
+        android:padding="15dp"
+        android:layout_alignParentBottom="true"
         android:text="next"
         android:textColor="#ffffff"
         android:textSize="9pt" />
-</LinearLayout>
+</RelativeLayout>

@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -255,6 +256,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             Intent intent =new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
+            Animatoo.animateShrink(this);
             super.finish();
 
         }
