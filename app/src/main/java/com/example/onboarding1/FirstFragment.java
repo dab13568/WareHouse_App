@@ -1,6 +1,7 @@
 package com.example.onboarding1;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -62,14 +63,15 @@ public class FirstFragment extends Fragment implements TextWatcher {
             MainActivity.valid_name=false;
         else MainActivity.valid_name=true;
 
-        if(!(phone.getText().toString().matches("05[0-9]{8}")))
-            MainActivity.valid_phone=false;
-        else MainActivity.valid_phone=true;
-//
-//        MainActivity mainActivity = (MainActivity) getActivity();
-//        Fragment fragment= mainActivity.getAdapter().getItem(0);
-
-
+        if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
+            MainActivity.valid_phone = false;
+            phone.setTextColor(Color.parseColor("#ff0000"));
+        }
+        else {
+            MainActivity.valid_phone = true;
+            phone.setTextColor(Color.parseColor("#040E69"));
+        }
+        SecondFragment.valid();
     }
 
     @Override
@@ -78,8 +80,14 @@ public class FirstFragment extends Fragment implements TextWatcher {
             MainActivity.valid_name=false;
         else MainActivity.valid_name=true;
 
-        if(!(phone.getText().toString().matches("05[0-9]{8}")))
-            MainActivity.valid_phone=false;
-        else MainActivity.valid_phone=true;
+        if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
+            MainActivity.valid_phone = false;
+            phone.setTextColor(Color.parseColor("#ff0000"));
+        }
+        else {
+            MainActivity.valid_phone=true;
+            phone.setTextColor(Color.parseColor("#040E69"));
+        }
+        SecondFragment.valid();
     }
 }

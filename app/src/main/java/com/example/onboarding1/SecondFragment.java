@@ -40,9 +40,9 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     static TextView address_icon;
     static SharedPreferences prefs;
     EditText weight;
-    ImageButton add_package;
-    MainActivity mainActivity;
-    TextView error_message;
+    static ImageButton add_package;
+    static MainActivity mainActivity;
+    static TextView error_message;
 
     public SecondFragment() {
         // Required empty public constructor
@@ -65,6 +65,8 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         back=view.findViewById(R.id.textViewBack);
 
         add_package.setEnabled(false);
+        error_message.setVisibility(View.VISIBLE);
+        add_package.setImageResource(R.drawable.error);
 
         //sign up the fields to Text/selection Changed
         breakable.setOnItemSelectedListener(this);
@@ -140,10 +142,11 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
                 }
             case R.id.breakable:
                 if (parent.getItemAtPosition(position)=="תוכן שביר")
-                    MainActivity.valid_packagetype = false;
+                    MainActivity.valid_breakable = false;
                 else
-                    MainActivity.valid_packagetype = true;
+                    MainActivity.valid_breakable = true;
         }
+        valid();
     }
 
 
@@ -169,19 +172,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         else
             MainActivity.valid_weight = false;
 
-        if (mainActivity.valid()) {
-            add_package.setEnabled(true);
-            add_package.setImageResource(R.drawable.checked);
-            error_message.setVisibility(View.GONE);
-        }
-
-        else
-        {
-            add_package.setEnabled(false);
-            error_message.setVisibility(View.VISIBLE);
-            add_package.setImageResource(R.drawable.error);
-        }
-
     }
 
 
@@ -196,13 +186,15 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             MainActivity.valid_weight = true;
         else
             MainActivity.valid_weight = false;
+    }
 
+    public static void valid()
+    {
         if (mainActivity.valid()) {
             add_package.setEnabled(true);
             add_package.setImageResource(R.drawable.checked);
             error_message.setVisibility(View.GONE);
         }
-
         else
         {
             add_package.setEnabled(false);
