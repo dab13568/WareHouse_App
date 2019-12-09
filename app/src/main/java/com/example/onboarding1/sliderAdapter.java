@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class sliderAdapter extends FragmentPagerAdapter {
     public sliderAdapter(FragmentManager fm) {
         super(fm);
+
     }
 
     Fragment fragment1;

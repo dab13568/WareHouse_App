@@ -200,6 +200,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             add_package.setEnabled(false);
             error_message.setVisibility(View.VISIBLE);
             add_package.setImageResource(R.drawable.error);
+
         }
     }
 
