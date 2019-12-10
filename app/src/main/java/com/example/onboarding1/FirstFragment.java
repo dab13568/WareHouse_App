@@ -60,15 +60,15 @@ public class FirstFragment extends Fragment implements TextWatcher {
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if(name.getText().toString() == "")
-            MainActivity.valid_name=false;
-        else MainActivity.valid_name=true;
+            AddPackage.valid_name=false;
+        else AddPackage.valid_name=true;
 
         if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
-            MainActivity.valid_phone = false;
+            AddPackage.valid_phone = false;
             phone.setTextColor(Color.parseColor("#ff0000"));
         }
         else {
-            MainActivity.valid_phone = true;
+            AddPackage.valid_phone = true;
             phone.setTextColor(Color.parseColor("#040E69"));
         }
         SecondFragment.valid();
@@ -77,15 +77,15 @@ public class FirstFragment extends Fragment implements TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
         if(name.getText().toString() == "")
-            MainActivity.valid_name=false;
-        else MainActivity.valid_name=true;
+            AddPackage.valid_name=false;
+        else AddPackage.valid_name=true;
 
         if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
-            MainActivity.valid_phone = false;
+            AddPackage.valid_phone = false;
             phone.setTextColor(Color.parseColor("#ff0000"));
         }
         else {
-            MainActivity.valid_phone=true;
+            AddPackage.valid_phone=true;
             phone.setTextColor(Color.parseColor("#040E69"));
         }
         SecondFragment.valid();

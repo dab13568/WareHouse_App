@@ -1,39 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/maincontainer"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_add_package"
+    android:background="@drawable/background_main"
     android:orientation="vertical">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </androidx.viewpager.widget.ViewPager>
+        android:layout_height="wrap_content"
+        android:textSize="45dp"
+        android:layout_marginHorizontal="6pt"
+        android:layout_marginTop="12pt"
+        android:fontFamily="@font/heebo_bold"
+        android:text="לילה טוב!"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textStyle="normal" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="160pt"
-            android:layout_marginBottom="2dp"
-            android:layout_marginHorizontal="5pt"
-            tools:context=".MainActivity" />
+        android:layout_gravity="right"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/add_package"
+            android:background="@drawable/circle_button"
+            android:layout_width="48dp"
+            android:lineHeight="48dp"
+            android:backgroundTint="#A71B45"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/ic_add"
+            android:layout_marginRight="20dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"/>
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="300dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="7dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/rounded_text"
+        android:drawablePadding="12dp"
+        android:maxLength="10"
+        android:hint="מספר חבילה או שם נמען"
+        android:inputType="text"
+        android:padding="7dp"
+        android:textColor="#040E69" />
+
+
+
+
+
     </LinearLayout>
+    <Button
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_text"
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_text"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:layout_marginHorizontal="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_text"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
 
 </LinearLayout>
-
-
-
-
-

@@ -25,7 +25,7 @@ public class delivered_activity extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent =new Intent(delivered_activity.this, MainActivity.class);
+                Intent intent =new Intent(delivered_activity.this, AddPackage.class);
                 startActivity(intent);
                 finish();
             }

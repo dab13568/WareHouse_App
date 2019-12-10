@@ -13,10 +13,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17pt"
+            android:textSize="30dp"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
             android:layout_marginTop="12pt"
             android:layout_marginHorizontal="6pt"
-            android:fontFamily="@font/heebo_regular"
+            android:fontFamily="@font/heebo_bold"
             android:text="תוכן החבילה"
             android:textAlignment="center"
             android:textColor="#ffffff"
@@ -28,7 +32,7 @@
             android:background="@drawable/rounded_text"
             android:layout_gravity="center"
             android:padding="5.5dp"
-            android:layout_marginTop="30pt"
+            android:layout_marginTop="45dp"
             android:textAlignment="center"
             android:entries="@array/package_type"
             android:layout_height="wrap_content" />
@@ -81,7 +85,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/heebo_bold"
                 android:padding="2dp"
-                android:textColor="#CEFDCF"/>
+                android:textColor="#ffffff"/>
         </LinearLayout>
 
         <ImageButton

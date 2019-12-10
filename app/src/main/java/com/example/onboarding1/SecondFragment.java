@@ -15,13 +15,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -41,7 +38,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     static SharedPreferences prefs;
     EditText weight;
     static ImageButton add_package;
-    static MainActivity mainActivity;
+    static AddPackage mainActivity;
     static TextView error_message;
 
     public SecondFragment() {
@@ -74,7 +71,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address.addTextChangedListener(this);
         weight.addTextChangedListener(this);
 
-        mainActivity = (MainActivity) getActivity();
+        mainActivity = (AddPackage) getActivity();
 
         //put the address in the fragment
         prefs = getContext().getSharedPreferences("maps", MODE_PRIVATE);
@@ -125,7 +122,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             address.setTextColor(Color.parseColor("#FF0000"));
         } else {
             address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_on, 0, 0, 0);
-            address.setTextColor(Color.parseColor("#FFCEFDCF"));
+            address.setTextColor(Color.parseColor("#ffffff"));
         }
     }
 
@@ -135,16 +132,16 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         switch (parent.getId()) {
             case R.id.package_type:
                 if (parent.getItemAtPosition(position).toString() == "סוג החבילה")
-                    MainActivity.valid_packagetype = false;
+                    AddPackage.valid_packagetype = false;
                 else {
                     //String text = parent.getItemAtPosition(position).toString();
-                    MainActivity.valid_packagetype = true;
+                    AddPackage.valid_packagetype = true;
                 }
             case R.id.breakable:
                 if (parent.getItemAtPosition(position)=="תוכן שביר")
-                    MainActivity.valid_breakable = false;
+                    AddPackage.valid_breakable = false;
                 else
-                    MainActivity.valid_breakable = true;
+                    AddPackage.valid_breakable = true;
         }
         valid();
     }
@@ -163,14 +160,14 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
         if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
-            MainActivity.valid_address = false;
+            AddPackage.valid_address = false;
         else
-            MainActivity.valid_address = true;
+            AddPackage.valid_address = true;
 
         if (weight.getText().toString() != "")
-            MainActivity.valid_weight = true;
+            AddPackage.valid_weight = true;
         else
-            MainActivity.valid_weight = false;
+            AddPackage.valid_weight = false;
 
     }
 
@@ -178,14 +175,14 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void afterTextChanged(Editable s) {
         if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
-            MainActivity.valid_address = false;
+            AddPackage.valid_address = false;
         else
-            MainActivity.valid_address = true;
+            AddPackage.valid_address = true;
 
         if (weight.getText().toString() != "")
-            MainActivity.valid_weight = true;
+            AddPackage.valid_weight = true;
         else
-            MainActivity.valid_weight = false;
+            AddPackage.valid_weight = false;
     }
 
     public static void valid()
