@@ -17,6 +17,7 @@
             android:shadowColor="@color/text_shadow"
             android:shadowDx="2"
             android:shadowDy="2"
+            android:gravity="center"
             android:shadowRadius="3"
             android:layout_marginTop="12pt"
             android:layout_marginHorizontal="6pt"
@@ -96,12 +97,6 @@
             android:layout_height="70dp"
             android:layout_gravity="center"/>
 
-        <ProgressBar
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:id="@+id/progress_circular" />
-
         <TextView
             android:id="@+id/missing_details"
             android:layout_width="match_parent"
@@ -115,7 +110,11 @@
             android:textColor="#FF0000"
             android:textStyle="normal" />
 
-
+        <ProgressBar
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:id="@+id/progress_circular" />
 
 
     </LinearLayout>
