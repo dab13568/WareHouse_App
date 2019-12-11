@@ -249,6 +249,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             Toast.makeText(getContext(),"Error", Toast.LENGTH_LONG).show();
 
         }
-    }
+    }//
 
 }
