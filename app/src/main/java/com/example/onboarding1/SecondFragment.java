@@ -46,7 +46,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     static ImageButton add_package;
     static AddPackage mainActivity;
     static TextView error_message;
-
     public SecondFragment() {
         // Required empty public constructor
     }
@@ -72,6 +71,8 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         error_message.setVisibility(View.VISIBLE);
         add_package.setImageResource(R.drawable.error);
         progressBar.setVisibility(View.GONE);
+
+
 
 
         //sign up the fields to Text/selection Changed
@@ -207,18 +208,45 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             add_package.setImageResource(R.drawable.error);
 
         }
+
+    }
+    private Parcel getParcel()
+    {
+        Parcel p=new Parcel();
+        p.setDistributionCenterAddress(address.getText().toString());
+        if(breakable.getSelectedItem().toString().equals("תוכן החבילה שביר"))
+            p.setFragile(true);
+        else
+            p.setFragile(false);
+        p.setRecipientAddress("ישעיהו הנביא");
+        p.setParcelId("0");
+        p.setRecipientName(FirstFragment.name.toString());
+        p.setStatus(Parcel.Status.Registered);
+        p.setRecipientPhoneNumber(FirstFragment.phone.toString());
+        if(type_package.getSelectedItem().toString().equals("חבילה גדולה"))
+            p.setType(Parcel.Type.LargePackage);
+        if(type_package.getSelectedItem().toString().equals("חבילה קטנה"))
+            p.setType(Parcel.Type.SmallPackage);
+        if(type_package.getSelectedItem().toString().equals("מעטפה"))
+            p.setType(Parcel.Type.Envelope);
+        //double a = Double.valueOf(weight.getText().toString());
+        p.setWeight(Double.valueOf(weight.getText().toString()));
+        return p;
     }
 
 
 
     private void addParcel() {
+        /*
         Parcel parcel = new Parcel();
         parcel.setRecipientPhoneNumber("0588745888");
         parcel.setRecipientName("moshe levi");
+        */
         try {
+
             //Parcel parcel = getStudent();
 
-            Firebase_DBManager.addParcel(parcel, new Action<String>()
+            Firebase_DBManager.addParcel(getParcel(), new Action<String>()
         {
                 @Override
                 public void onSuccess(String obj) {
@@ -246,7 +274,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
                 }
             });
         } catch (Exception e) {
-            Toast.makeText(getContext(),"Error", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(),e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 

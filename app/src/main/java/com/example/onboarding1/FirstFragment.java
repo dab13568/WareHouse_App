@@ -22,8 +22,8 @@ import android.widget.TextView;
 public class FirstFragment extends Fragment implements TextWatcher {
     TextView next;
     ViewPager viewPager;
-    EditText phone;
-    EditText name;
+    public  static EditText phone;
+    public static EditText name;
 
     public FirstFragment() {
         // Required empty public constructor
