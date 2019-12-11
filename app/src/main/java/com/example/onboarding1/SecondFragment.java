@@ -82,6 +82,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address.addTextChangedListener(this);
         weight.addTextChangedListener(this);
 
+        int r=6;
         mainActivity = (AddPackage) getActivity();
 
         //put the address in the fragment
