@@ -18,8 +18,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddPackage"></activity>
+        <activity android:name=".ParcelViewHolder"></activity>
+        <activity android:name=".AddPackage" />
         <activity android:name=".delivered_activity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
