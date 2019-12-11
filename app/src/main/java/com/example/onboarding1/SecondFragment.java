@@ -220,9 +220,9 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             p.setFragile(false);
         p.setRecipientAddress("ישעיהו הנביא");
         p.setParcelId("0");
-        p.setRecipientName(FirstFragment.name.toString());
+        p.setRecipientName(FirstFragment.name.getText().toString());
         p.setStatus(Parcel.Status.Registered);
-        p.setRecipientPhoneNumber(FirstFragment.phone.toString());
+        p.setRecipientPhoneNumber(FirstFragment.phone.getText().toString());
         if(type_package.getSelectedItem().toString().equals("חבילה גדולה"))
             p.setType(Parcel.Type.LargePackage);
         if(type_package.getSelectedItem().toString().equals("חבילה קטנה"))
