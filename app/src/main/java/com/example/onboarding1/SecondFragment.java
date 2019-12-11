@@ -158,12 +158,10 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
     }
 
     @Override
@@ -247,8 +245,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             });
         } catch (Exception e) {
             Toast.makeText(getContext(),"Error", Toast.LENGTH_LONG).show();
-
         }
-    }//
+    }
 
 }
