@@ -237,15 +237,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
 
     private void addParcel() {
-        /*
-        Parcel parcel = new Parcel();
-        parcel.setRecipientPhoneNumber("0588745888");
-        parcel.setRecipientName("moshe levi");
-        */
         try {
-
-            //Parcel parcel = getStudent();
-
             Firebase_DBManager.addParcel(getParcel(), new Action<String>()
         {
                 @Override
