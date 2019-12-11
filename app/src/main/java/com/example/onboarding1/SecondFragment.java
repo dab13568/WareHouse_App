@@ -7,7 +7,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.transition.Visibility;
 import androidx.viewpager.widget.ViewPager;
+import com.example.onboarding1.Data.Parcel;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,8 +19,13 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.onboarding1.Data.Action;
+import com.example.onboarding1.Data.Firebase_DBManager;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -33,10 +40,11 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     TextView back;
     Spinner type_package;
     Spinner breakable;
+    EditText weight;
+    ProgressBar progressBar;
     static TextView address;
     static TextView address_icon;
     static SharedPreferences prefs;
-    EditText weight;
     static ImageButton add_package;
     static AddPackage mainActivity;
     static TextView error_message;
@@ -60,10 +68,13 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address_icon = view.findViewById(R.id.address_icon);
         error_message=view.findViewById(R.id.missing_details);
         back=view.findViewById(R.id.textViewBack);
+        progressBar=view.findViewById(R.id.progress_circular);
 
         add_package.setEnabled(false);
         error_message.setVisibility(View.VISIBLE);
         add_package.setImageResource(R.drawable.error);
+        progressBar.setVisibility(View.GONE);
+
 
         //sign up the fields to Text/selection Changed
         breakable.setOnItemSelectedListener(this);
@@ -94,9 +105,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             @Override
             public void onClick(View v)
             {
-                Intent intent =new Intent(getActivity(), delivered_activity.class);
-                startActivity(intent);
-                getActivity().finish();
+                addParcel();
             }
         });
 
@@ -197,6 +206,47 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
             add_package.setEnabled(false);
             error_message.setVisibility(View.VISIBLE);
             add_package.setImageResource(R.drawable.error);
+
+        }
+    }
+
+
+
+    private void addParcel() {
+        Parcel parcel = new Parcel();
+        parcel.setRecipientPhoneNumber("0588745888");
+        parcel.setRecipientName("moshe levi");
+        try {
+            //Parcel parcel = getStudent();
+            Firebase_DBManager.addParcel(parcel, new Action<String>()
+        {
+                @Override
+                public void onSuccess(String obj) {
+                    Intent intent =new Intent(getActivity(), delivered_activity.class);
+                    progressBar.setVisibility(View.GONE);
+                    add_package.setVisibility(View.VISIBLE);
+
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+
+            @Override
+                public void onFailure(Exception exception) {
+                    Toast.makeText(getContext(), "Error \n" + exception.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
+                    add_package.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onProgress(String status, double percent) {
+                    if (percent != 100) {
+                        add_package.setVisibility(View.GONE);
+                    }
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getContext(),"Error", Toast.LENGTH_LONG).show();
 
         }
     }

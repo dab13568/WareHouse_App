@@ -29,10 +29,11 @@
             android:id="@+id/add_package"
             android:background="@drawable/circle_button"
             android:layout_width="48dp"
-            android:lineHeight="48dp"
             android:backgroundTint="#A71B45"
             android:layout_marginTop="25dp"
             android:src="@drawable/ic_add"
+            android:foregroundGravity="center"
+
             android:layout_marginRight="20dp"
             android:layout_height="48dp"
             android:layout_gravity="center"/>
