@@ -59,7 +59,7 @@ public class FirstFragment extends Fragment implements TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if(name.getText().toString() == "")
+        if(name.getText().toString().equals( ""))
             AddPackage.valid_name=false;
         else AddPackage.valid_name=true;
 
@@ -76,7 +76,7 @@ public class FirstFragment extends Fragment implements TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        if(name.getText().toString() == "")
+        if(name.getText().toString().equals( ""))
             AddPackage.valid_name=false;
         else AddPackage.valid_name=true;
 

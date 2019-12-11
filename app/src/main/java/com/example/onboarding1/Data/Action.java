@@ -2,7 +2,7 @@ package com.example.onboarding1.Data;
 
 public interface Action<T>
 {
-    void onSuccess(T obj);
-    void onFailure(Exception exception);
-    void onProgress(String status, double percent);
+    public void onSuccess(T obj);
+    public void onFailure(Exception exception);
+    public void onProgress(String status, double percent);
 }

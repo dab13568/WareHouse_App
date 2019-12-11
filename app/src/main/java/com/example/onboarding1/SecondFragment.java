@@ -5,12 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.transition.Visibility;
-import androidx.viewpager.widget.ViewPager;
-import com.example.onboarding1.Data.Parcel;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -24,8 +18,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.onboarding1.Data.Action;
 import com.example.onboarding1.Data.Firebase_DBManager;
+import com.example.onboarding1.Data.Parcel;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -92,7 +90,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address = view.findViewById(R.id.address);
 
         //change the color of the address
-        if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
+        if (name.equals( "") || name.equals( "לא ניתן למצוא את מיקומך הנוכחי") || name.equals( "נא הפעל GPS") || name.equals("Permission Denied...")) {
             address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
             address.setTextColor(Color.parseColor("#FF0000"));
         } else {
@@ -127,7 +125,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         String name = prefs.getString("add", "GPS Error");
         address.setText(name);
 
-        if (name == "" || name == "לא ניתן למצוא את מיקומך הנוכחי" || name == "נא הפעל GPS" || name == "Permission Denied...") {
+        if (name.equals( "") || name.equals( "לא ניתן למצוא את מיקומך הנוכחי") || name.equals("נא הפעל GPS") || name.equals( "Permission Denied...")) {
             address_icon.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_location_off, 0, 0, 0);
             address.setTextColor(Color.parseColor("#FF0000"));
         } else {
@@ -141,14 +139,15 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
         switch (parent.getId()) {
             case R.id.package_type:
-                if (parent.getItemAtPosition(position).toString() == "סוג החבילה")
+                if (parent.getItemAtPosition(position).toString().equals( "סוג החבילה"))
                     AddPackage.valid_packagetype = false;
                 else {
                     //String text = parent.getItemAtPosition(position).toString();
                     AddPackage.valid_packagetype = true;
                 }
+                break;
             case R.id.breakable:
-                if (parent.getItemAtPosition(position)=="תוכן שביר")
+                if (parent.getItemAtPosition(position).toString().equals("תוכן שביר"))
                     AddPackage.valid_breakable = false;
                 else
                     AddPackage.valid_breakable = true;
@@ -167,30 +166,31 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
+        if (address.getText().toString().equals( "") || address.getText().toString().equals( "לא ניתן למצוא את מיקומך הנוכחי") || address.getText().toString().equals( "נא הפעל GPS") || address.getText().toString().equals( "Permission Denied..."))
             AddPackage.valid_address = false;
         else
             AddPackage.valid_address = true;
 
-        if (weight.getText().toString() != "")
+        if (!weight.getText().toString().equals( ""))
             AddPackage.valid_weight = true;
         else
             AddPackage.valid_weight = false;
-
+        valid();
     }
 
 
     @Override
     public void afterTextChanged(Editable s) {
-        if (address.getText() == "" || address.getText() == "לא ניתן למצוא את מיקומך הנוכחי" || address.getText() == "נא הפעל GPS" || address.getText() == "Permission Denied...")
+        if (address.getText().toString().equals( "") || address.getText().toString().equals( "לא ניתן למצוא את מיקומך הנוכחי" )|| address.getText().toString().equals( "נא הפעל GPS") || address.getText().toString().equals( "Permission Denied..."))
             AddPackage.valid_address = false;
         else
             AddPackage.valid_address = true;
 
-        if (weight.getText().toString() != "")
+        if (!weight.getText().toString().equals( ""))
             AddPackage.valid_weight = true;
         else
             AddPackage.valid_weight = false;
+        valid();
     }
 
     public static void valid()
@@ -217,6 +217,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         parcel.setRecipientName("moshe levi");
         try {
             //Parcel parcel = getStudent();
+
             Firebase_DBManager.addParcel(parcel, new Action<String>()
         {
                 @Override
