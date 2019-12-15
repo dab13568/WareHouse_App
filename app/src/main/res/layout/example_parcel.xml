@@ -55,6 +55,7 @@
             <TextView
                 android:id="@+id/name_sender"
                 android:layout_width="wrap_content"
+                android:textColor="#0B0863"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -62,7 +63,7 @@
                 android:textColor="#000000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="שם השולח: "
+                android:text="שם הנמען: "
                 android:layout_marginLeft="5dp"/>
 
         </LinearLayout>
@@ -81,6 +82,7 @@
             <TextView
                 android:id="@+id/address_parcel"
                 android:layout_width="wrap_content"
+                android:textColor="#0B0863"
                 android:layout_height="wrap_content" />
 
             <TextView
@@ -105,6 +107,7 @@
 
             <TextView
                 android:id="@+id/phone_"
+                android:textColor="#0B0863"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -117,6 +120,19 @@
                 android:text="מספר פלאפון:  " />
 
         </LinearLayout>
+
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:marginHorizontal="12dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#0B0863"
+            android:layout_alignParentBottom="true"
+            android:fontFamily="@font/heebo_regular"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

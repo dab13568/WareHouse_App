@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,29 +77,21 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public class ParcelRecycleViewAdapter extends RecyclerView.Adapter<ParcelViewHolder> {
+    public class ParcelRecycleViewAdapter extends RecyclerView.Adapter<ParcelViewHolder>
+    {
         @NonNull
         @Override
         public ParcelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(getBaseContext()).inflate(R.layout.example_parcel,             parent,              false);
+            View v = LayoutInflater.from(getBaseContext()).inflate(R.layout.example_parcel, parent,false);
             return new ParcelViewHolder(v); }
 
-
-            /*
-        public ParcelViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View v = LayoutInflater.from(getBaseContext()).inflate(R.layout.activity_parcel_view_holder, parent, false);
-            ExtraParcelInfo extraParcelInfo = (ExtraParcelInfo) getSupportFragmentManager().findFragmentById(R.id.extra_parcel_frg);
-            return new ParcelViewHolder(v, extraParcelInfo);
-        }
-
-             */
 
         @Override
         public void onBindViewHolder(@NonNull ParcelViewHolder holder, int position) {
             Parcel parcel = parcels.get(position);
 
-            holder.nameTextView.setText((CharSequence)parcel.getRecipientName());
-            holder.phoneTextView.setText((CharSequence)parcel.getRecipientPhoneNumber());
+            holder.nameTextView.setText(parcel.getRecipientName());
+            holder.phoneTextView.setText(parcel.getRecipientPhoneNumber());
         }
 
         @Override
@@ -108,14 +99,17 @@ public class MainActivity extends AppCompatActivity {
             return parcels.size();
         }
     }
-    class ParcelViewHolder extends RecyclerView.ViewHolder {
+
+    class ParcelViewHolder extends RecyclerView.ViewHolder
+    {
         TextView nameTextView;
         TextView phoneTextView;
+
         ParcelViewHolder(View itemView)
         {
             super(itemView);
 
-            //personImageView = itemView.findViewById(R.id. personImageView);
+
             nameTextView = itemView.findViewById(R.id.name_sender);
             phoneTextView = itemView.findViewById(R.id.phone_);
         }
