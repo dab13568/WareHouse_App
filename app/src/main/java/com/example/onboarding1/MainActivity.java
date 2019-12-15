@@ -7,9 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,14 +21,16 @@ import com.example.onboarding1.Data.Firebase_DBManager;
 import com.example.onboarding1.Data.NotifyDataChange;
 import com.example.onboarding1.Data.Parcel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView parcelRecyclerView;
-    private List<Parcel> parcels;
+    private List<Parcel> parcelsCopy;
+    private List<com.example.onboarding1.Data.Parcel> parcels;
     ImageButton imageButton;
-
+    EditText search;
 
 
 
@@ -35,15 +40,18 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        search=findViewById(R.id.phone_number);
         imageButton=findViewById(R.id.add_package);
         parcelRecyclerView=findViewById(R.id.parcelsList);
         parcelRecyclerView.setHasFixedSize(true);
         parcelRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<com.example.onboarding1.Data.Parcel>>() {
+
             @Override
             public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
                 parcels = obj;
-
+                parcelsCopy=parcels;
                 if (parcelRecyclerView.getAdapter() == null) {
                     parcelRecyclerView.setAdapter(new ParcelRecycleViewAdapter());
                 }
@@ -67,7 +75,57 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.toString().equals(""))
+                {
+                    Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<com.example.onboarding1.Data.Parcel>>() {
+                        @Override
+                        public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
+                            parcels = obj;
+                            parcelsCopy = obj;
+
+                            if (parcelRecyclerView.getAdapter() == null) {
+                                parcelRecyclerView.setAdapter(new ParcelRecycleViewAdapter());
+                            }
+                            else {
+                                parcelRecyclerView.getAdapter().notifyDataSetChanged();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Exception exception) {
+                            Toast.makeText(getBaseContext(), "error to get parcel list\n" + exception.toString(), Toast.LENGTH_LONG).show();
+
+                        }
+                    });
+                }
+                else {
+                    parcels = new ArrayList<>();
+                    for (Parcel p : parcelsCopy) {
+                        if (p.getRecipientAddress().contains(search.getText().toString()) || p.getRecipientName().contains(search.getText().toString()) || p.getRecipientPhoneNumber().contains(search.getText().toString()))
+                            parcels.add(p);
+                    }
+                    Firebase_DBManager.stopNotifyToParcelList();
+                    parcelRecyclerView.setAdapter(new ParcelRecycleViewAdapter());
+                }
+            }
+        });
     }
+
+
 
 
 
