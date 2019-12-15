@@ -14,7 +14,7 @@
         android:gravity="center"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/heebo_bold"
-        android:text="לילה טוב!"
+        android:text="תצוגת חבילות"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textStyle="normal" />

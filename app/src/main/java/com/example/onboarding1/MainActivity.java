@@ -92,10 +92,19 @@ public class MainActivity extends AppCompatActivity {
 
             holder.nameTextView.setText(parcel.getRecipientName());
             holder.phoneTextView.setText(parcel.getRecipientPhoneNumber());
+            holder.address.setText(parcel.getDistributionCenterAddress());
+            holder.id.setText(parcel.getParcelId());
+
+            if(parcel.getFragile())
+                holder.other_details.setText(" החבילה היא מסוג " + parcel.getType().toString()+ "," +" והיא מכילה תוכן שביר! ");
+            else holder.other_details.setText(" החבילה היא מסוג " + parcel.getType().toString()+ "," +" ואינה מכילה תוכן שביר! ");
+
+
         }
 
         @Override
-        public int getItemCount() {
+        public int getItemCount()
+        {
             return parcels.size();
         }
     }
@@ -104,12 +113,17 @@ public class MainActivity extends AppCompatActivity {
     {
         TextView nameTextView;
         TextView phoneTextView;
+        TextView other_details;
+        TextView address;
+        TextView id;
 
         ParcelViewHolder(View itemView)
         {
             super(itemView);
 
-
+            id= itemView.findViewById(R.id.id_parcel);
+            address = itemView.findViewById(R.id.address_parcel);
+            other_details = itemView.findViewById(R.id.other_details);
             nameTextView = itemView.findViewById(R.id.name_sender);
             phoneTextView = itemView.findViewById(R.id.phone_);
         }
