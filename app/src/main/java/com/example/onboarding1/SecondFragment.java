@@ -1,6 +1,5 @@
 package com.example.onboarding1;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -248,6 +247,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
                     startActivity(intent);
                     getActivity().finish();
+
                 }
 
             @Override
@@ -259,9 +259,11 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
                 @Override
                 public void onProgress(String status, double percent) {
-                    if (percent != 100) {
-                        add_package.setVisibility(View.GONE);
-                    }
+
+                    add_package.setVisibility(View.GONE);
+//                    if (percent != 100) {
+//                        add_package.setVisibility(View.GONE);
+//                    }
                     progressBar.setVisibility(View.VISIBLE);
                 }
             });

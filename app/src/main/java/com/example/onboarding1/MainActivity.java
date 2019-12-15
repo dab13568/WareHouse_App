@@ -41,30 +41,31 @@ public class MainActivity extends AppCompatActivity {
         parcelRecyclerView.setHasFixedSize(true);
         parcelRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<com.example.onboarding1.Data.Parcel>>() {
-                                                  @Override
-                                                  public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
-                                                      parcels = obj;
+            @Override
+            public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
+                parcels = obj;
 
-                                                      if (parcelRecyclerView.getAdapter() == null) {
-                                                          parcelRecyclerView.setAdapter(new ParcelRecycleViewAdapter());
-                                                      }
-                                                      else {
-                                                          parcelRecyclerView.getAdapter().notifyDataSetChanged();
-                                                      }
-                                                  }
+                if (parcelRecyclerView.getAdapter() == null) {
+                    parcelRecyclerView.setAdapter(new ParcelRecycleViewAdapter());
+                }
+                else {
+                    parcelRecyclerView.getAdapter().notifyDataSetChanged();
+                }
+            }
 
-                                                  @Override
-                                                  public void onFailure(Exception exception) {
-                                                      Toast.makeText(getBaseContext(), "error to get parcel list\n" + exception.toString(), Toast.LENGTH_LONG).show();
+            @Override
+            public void onFailure(Exception exception) {
+                Toast.makeText(getBaseContext(), "error to get parcel list\n" + exception.toString(), Toast.LENGTH_LONG).show();
 
-                                                  }
-                                              });
+            }
+        });
 
         imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(MainActivity.this, AddPackage.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
     }
@@ -97,11 +98,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ParcelViewHolder holder, int position) {
             Parcel parcel = parcels.get(position);
-            String kuku=parcel.getRecipientName();
-            if(holder.equals(null))
-                kuku="dd";
+
             holder.nameTextView.setText((CharSequence)parcel.getRecipientName());
-            holder.phoneTextView.setText((CharSequence)parcel.getRecipientPhoneNumber());        }
+            holder.phoneTextView.setText((CharSequence)parcel.getRecipientPhoneNumber());
+        }
 
         @Override
         public int getItemCount() {
@@ -111,19 +111,13 @@ public class MainActivity extends AppCompatActivity {
     class ParcelViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
         TextView phoneTextView;
-        //ImageView personImageView;
-        ParcelViewHolder(View itemView) {
+        ParcelViewHolder(View itemView)
+        {
             super(itemView);
 
             //personImageView = itemView.findViewById(R.id. personImageView);
-            nameTextView = itemView.findViewById(R.id.namesender);
+            nameTextView = itemView.findViewById(R.id.name_sender);
             phoneTextView = itemView.findViewById(R.id.phone_);
         }
     }
-
-
-
-
-
-
 }
