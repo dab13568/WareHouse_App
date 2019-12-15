@@ -30,6 +30,8 @@ public class Firebase_DBManager {
     }
 
 
+
+
     public static void addParcel(final Parcel parcel, final Action<String> action) {
         String phone = parcel.getRecipientPhoneNumber();
         String key = parcel.getParcelId();
@@ -114,6 +116,7 @@ public class Firebase_DBManager {
                     for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
                         Parcel parcel = uniqueKeySnapshot.getValue(Parcel.class);
                         boolean flag = true;
+                        /*
                         for (int i = 0; i < parcelList.size(); i++) {
                             if (parcelList.get(i).getParcelId().equals(parcel.getParcelId())) {
                                 parcelList.set(i, parcel);
@@ -121,6 +124,8 @@ public class Firebase_DBManager {
                                 break;
                             }
                         }
+
+                        */
                         if (flag)
                             parcelList.add(parcel);
                     }
