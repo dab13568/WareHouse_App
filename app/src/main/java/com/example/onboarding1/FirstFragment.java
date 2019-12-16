@@ -24,6 +24,8 @@ public class FirstFragment extends Fragment implements TextWatcher {
     ViewPager viewPager;
     public  static EditText phone;
     public static EditText name;
+    public static EditText addressee;
+
 
     public FirstFragment() {
         // Required empty public constructor
@@ -35,12 +37,15 @@ public class FirstFragment extends Fragment implements TextWatcher {
     {
         View view= inflater.inflate(R.layout.fragment_first, container, false);
         viewPager=getActivity().findViewById(R.id.viewPager);
+
+        addressee= view.findViewById(R.id.address_parcel_addressee);
         name=view.findViewById(R.id.name);
         phone=view.findViewById(R.id.phone_number);
         next=view.findViewById(R.id.textViewNext);
 
         name.addTextChangedListener(this);
         phone.addTextChangedListener(this);
+        addressee.addTextChangedListener(this);
 
 
         next=view.findViewById(R.id.textViewNext);
@@ -63,6 +68,10 @@ public class FirstFragment extends Fragment implements TextWatcher {
             AddPackage.valid_name=false;
         else AddPackage.valid_name=true;
 
+        if(addressee.getText().toString().equals( ""))
+            AddPackage.addresse=false;
+        else AddPackage.addresse=true;
+
         if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
             AddPackage.valid_phone = false;
             phone.setTextColor(Color.parseColor("#ff0000"));
@@ -79,6 +88,11 @@ public class FirstFragment extends Fragment implements TextWatcher {
         if(name.getText().toString().equals( ""))
             AddPackage.valid_name=false;
         else AddPackage.valid_name=true;
+
+        if(addressee.getText().toString().equals( ""))
+            AddPackage.addresse=false;
+        else AddPackage.addresse=true;
+
 
         if(!(phone.getText().toString().matches("05[0-9]{8}"))) {
             AddPackage.valid_phone = false;

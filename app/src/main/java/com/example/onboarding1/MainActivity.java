@@ -156,8 +156,10 @@ public class MainActivity extends AppCompatActivity {
             Parcel parcel = parcels.get(position);
 
             holder.nameTextView.setText(parcel.getRecipientName());
+
+
             holder.phoneTextView.setText(parcel.getRecipientPhoneNumber());
-            holder.address.setText(parcel.getDistributionCenterAddress());
+            holder.address.setText(parcel.getRecipientAddress());
             holder.id.setText(parcel.getParcelId());
 
             if(parcel.getFragile())

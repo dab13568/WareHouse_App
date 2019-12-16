@@ -23,6 +23,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.onboarding1.Data.Action;
 import com.example.onboarding1.Data.Firebase_DBManager;
 import com.example.onboarding1.Data.Parcel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -166,7 +168,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if (address.getText().toString().equals( "") || address.getText().toString().equals( "לא ניתן למצוא את מיקומך הנוכחי") || address.getText().toString().equals( "נא הפעל GPS") || address.getText().toString().equals( "Permission Denied..."))
+        if (address.getText().toString().equals( "") || address.getText().toString().contains( "לא ניתן למצוא את מיקומך הנוכחי") || address.getText().toString().equals( "נא הפעל GPS") || address.getText().toString().contains( "Permission Denied..."))
             AddPackage.valid_address = false;
         else
             AddPackage.valid_address = true;
@@ -218,7 +220,12 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         else
             p.setFragile(false);
         p.setRecipientAddress("ישעיהו הנביא");
-        p.setParcelId("0");
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("RegisteredPackages");
+        p.setParcelId(myRef.push().getKey());
+
         p.setRecipientName(FirstFragment.name.getText().toString());
         p.setStatus(Parcel.Status.Registered);
         p.setRecipientPhoneNumber(FirstFragment.phone.getText().toString());
@@ -261,9 +268,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
                 public void onProgress(String status, double percent) {
 
                     add_package.setVisibility(View.GONE);
-//                    if (percent != 100) {
-//                        add_package.setVisibility(View.GONE);
-//                    }
                     progressBar.setVisibility(View.VISIBLE);
                 }
             });

@@ -53,6 +53,8 @@ public class AddPackage extends AppCompatActivity implements OnMapReadyCallback,
     static boolean valid_breakable;
     static boolean valid_packagetype;
     static boolean valid_weight;
+    static boolean addresse;
+
 
 
 
@@ -235,7 +237,7 @@ public class AddPackage extends AppCompatActivity implements OnMapReadyCallback,
 
     public boolean valid()
     {
-        return valid_phone && valid_name && valid_packagetype && valid_address && valid_weight && valid_breakable;
+        return valid_phone && addresse && valid_name && valid_packagetype && valid_address && valid_weight && valid_breakable;
     }
 
 
