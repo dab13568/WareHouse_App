@@ -60,16 +60,23 @@
             android:maxLength="10"
             android:padding="7dp"
             android:textColor="#040E69" />
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/parcel_address_maps"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+
+        <EditText
+            android:id="@+id/address_parcel_addressee"
             android:layout_width="match_parent"
-            android:layout_height="160pt"
-            android:layout_marginBottom="2dp"
-            android:layout_marginHorizontal="5pt"
-            tools:context=".AddPackage" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10pt"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_text"
+            android:drawableRight="@drawable/ic_map"
+            android:drawablePadding="12dp"
+            android:hint="כתובת הנמען"
+            android:inputType="textPersonName"
+            android:maxLength="10"
+            android:padding="7dp"
+            android:textColor="#040E69" />
 
     </LinearLayout>
 
