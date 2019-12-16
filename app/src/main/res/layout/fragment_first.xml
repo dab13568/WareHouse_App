@@ -21,6 +21,7 @@
             android:shadowRadius="3"
             android:layout_marginHorizontal="6pt"
             android:layout_marginTop="12pt"
+            android:gravity="center"
             android:fontFamily="@font/heebo_bold"
             android:text="פרטי מקבל החבילה"
             android:textAlignment="center"

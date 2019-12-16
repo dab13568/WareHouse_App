@@ -83,24 +83,6 @@ public class AddPackage extends AppCompatActivity implements OnMapReadyCallback,
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkUserLocationPermission();
         }
-
-
-
-
-        //firebase
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-        Task task = myRef.setValue("Hello, World!");
-
-        task.addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                    Toast.makeText(getBaseContext(),"Successful", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(getBaseContext(),"error", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
 
