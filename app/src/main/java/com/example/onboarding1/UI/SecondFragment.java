@@ -1,4 +1,4 @@
-package com.example.onboarding1;
+package com.example.onboarding1.UI;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,8 +21,10 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.onboarding1.Data.Action;
+import com.example.onboarding1.Data.AddPackage;
 import com.example.onboarding1.Data.Firebase_DBManager;
-import com.example.onboarding1.Data.Parcel;
+import com.example.onboarding1.Entities.Parcel;
+import com.example.onboarding1.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -82,7 +84,6 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
         address.addTextChangedListener(this);
         weight.addTextChangedListener(this);
 
-        int r=6;
         mainActivity = (AddPackage) getActivity();
 
         //put the address in the fragment

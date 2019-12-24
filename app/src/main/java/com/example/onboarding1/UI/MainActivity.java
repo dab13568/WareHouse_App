@@ -1,4 +1,4 @@
-package com.example.onboarding1;
+package com.example.onboarding1.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,10 +25,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onboarding1.Data.Action;
+import com.example.onboarding1.Data.AddPackage;
 import com.example.onboarding1.Data.Firebase_DBManager;
 import com.example.onboarding1.Data.NotifyDataChange;
-import com.example.onboarding1.Data.Parcel;
-import com.google.firebase.storage.OnProgressListener;
+import com.example.onboarding1.Entities.Parcel;
+import com.example.onboarding1.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView parcelRecyclerView;
     private List<Parcel> parcelsCopy;
-    private List<com.example.onboarding1.Data.Parcel> parcels;
+    private List<Parcel> parcels;
 
 
     ImageButton imageButton;
@@ -61,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         parcelRecyclerView=findViewById(R.id.parcelsList);
         parcelRecyclerView.setHasFixedSize(true);
         parcelRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<com.example.onboarding1.Data.Parcel>>() {
+        Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<Parcel>>() {
 
             @Override
-            public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
+            public void OnDataChanged(List<Parcel> obj) {
                 parcels = obj;
                 parcelsCopy=parcels;
                 if (parcelRecyclerView.getAdapter() == null) {
@@ -108,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(s.toString().equals(""))
                 {
-                    Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<com.example.onboarding1.Data.Parcel>>() {
+                    Firebase_DBManager.notifyToParcelList(new NotifyDataChange<List<Parcel>>() {
                         @Override
-                        public void OnDataChanged(List<com.example.onboarding1.Data.Parcel> obj) {
+                        public void OnDataChanged(List<Parcel> obj) {
                             parcels = obj;
                             parcelsCopy = obj;
 

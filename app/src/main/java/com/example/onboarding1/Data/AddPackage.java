@@ -1,4 +1,4 @@
-package com.example.onboarding1;
+package com.example.onboarding1.Data;
 
 import android.Manifest;
 import android.content.Intent;
@@ -9,9 +9,9 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.example.onboarding1.R;
+import com.example.onboarding1.UI.SecondFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -25,11 +25,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,13 +43,13 @@ public class AddPackage extends AppCompatActivity implements OnMapReadyCallback,
         GoogleApiClient.OnConnectionFailedListener,    //when the connection is faild
         LocationListener    //when the location changed
 {
-    static boolean valid_address;
-    static boolean valid_name;
-    static boolean valid_phone;
-    static boolean valid_breakable;
-    static boolean valid_packagetype;
-    static boolean valid_weight;
-    static boolean addresse;
+    public static boolean valid_address;
+    public static boolean valid_name;
+    public static boolean valid_phone;
+    public static boolean valid_breakable;
+    public static boolean valid_packagetype;
+    public static boolean valid_weight;
+    public static boolean addresse;
 
 
 
@@ -180,7 +176,6 @@ public class AddPackage extends AppCompatActivity implements OnMapReadyCallback,
             SecondFragment.sync();
 
 
-            //signup.setEnabled(true);
         } catch (IOException e) {
 
             Snackbar.make(findViewById(android.R.id.content), "לא ניתן למצוא את מיקומך הנוכחי", Snackbar.LENGTH_LONG).show();

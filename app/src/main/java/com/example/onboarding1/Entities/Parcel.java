@@ -1,4 +1,4 @@
-package com.example.onboarding1.Data;
+package com.example.onboarding1.Entities;
 
 // comment
 public class Parcel{

@@ -1,4 +1,4 @@
-package com.example.onboarding1;
+package com.example.onboarding1.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.onboarding1.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

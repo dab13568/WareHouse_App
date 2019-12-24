@@ -1,8 +1,11 @@
-package com.example.onboarding1;
+package com.example.onboarding1.Data;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.onboarding1.UI.FirstFragment;
+import com.example.onboarding1.UI.SecondFragment;
 
 public class sliderAdapter extends FragmentPagerAdapter {
     public sliderAdapter(FragmentManager fm) {
