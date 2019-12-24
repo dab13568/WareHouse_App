@@ -12,7 +12,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -21,9 +24,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.onboarding1.Data.Action;
 import com.example.onboarding1.Data.Firebase_DBManager;
 import com.example.onboarding1.Data.NotifyDataChange;
 import com.example.onboarding1.Data.Parcel;
+import com.google.firebase.storage.OnProgressListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView parcelRecyclerView;
     private List<Parcel> parcelsCopy;
     private List<com.example.onboarding1.Data.Parcel> parcels;
+
+
     ImageButton imageButton;
     EditText search;
-
+    static boolean  updateFlag;
 
 
 
@@ -46,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-        action_no_signal();
 
+        action_no_signal();
+        updateFlag=false;
         search=findViewById(R.id.phone_number);
         imageButton=findViewById(R.id.add_package);
         parcelRecyclerView=findViewById(R.id.parcelsList);
@@ -67,12 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onFailure(Exception exception) {
                 Toast.makeText(getBaseContext(), "error to get parcel list\n" + exception.toString(), Toast.LENGTH_LONG).show();
 
             }
         });
+
 
         imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -93,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
             }
-
+            //SEARCH OPTION
             @Override
             public void afterTextChanged(Editable s) {
                 if(s.toString().equals(""))
@@ -160,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
             holder.phoneTextView.setText(parcel.getRecipientPhoneNumber());
             holder.address.setText(parcel.getRecipientAddress());
-            holder.id.setText(parcel.getParcelId());
+            holder.id.setText(String.valueOf(position+1));
 
             if(parcel.getFragile())
                 holder.other_details.setText(" החבילה היא מסוג " + parcel.getType().toString()+ "," +" והיא מכילה תוכן שביר! ");
@@ -193,6 +203,36 @@ public class MainActivity extends AppCompatActivity {
             other_details = itemView.findViewById(R.id.other_details);
             nameTextView = itemView.findViewById(R.id.name_sender);
             phoneTextView = itemView.findViewById(R.id.phone_);
+
+            // itemView.setOnClickListener();
+            itemView.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+                @Override
+                public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                    menu.setHeaderTitle("אפשרויות");
+                    MenuItem delete = menu.add(Menu.NONE, 1, 1, "מחיקה");
+                    delete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            int position = getAdapterPosition();
+                            String id = parcels.get(position).getParcelId();
+                            Firebase_DBManager.removeParcel(parcels.get(position).getRecipientPhoneNumber()+"/"+id, new Action<String>() {
+
+
+                                @Override
+                                public void onSuccess(String obj) {
+
+                                }
+
+                                @Override
+                                public void onFailure(Exception exception) {                     }
+                                @Override
+                                public void onProgress(String status, double percent) {                      }                 });
+                            return true;
+
+                        }
+                    });
+                    //MenuItem update= menu.add(Menu.NONE,2,1,"עדכון");
+                } });
         }
     }
 

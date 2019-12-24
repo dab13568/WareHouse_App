@@ -75,7 +75,6 @@
             android:drawablePadding="12dp"
             android:hint="כתובת הנמען"
             android:inputType="textPersonName"
-            android:maxLength="10"
             android:padding="7dp"
             android:textColor="#040E69" />
 

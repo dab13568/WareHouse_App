@@ -27,33 +27,35 @@
 
         <ImageButton
             android:id="@+id/add_package"
-            android:background="@drawable/circle_button"
             android:layout_width="44dp"
-            android:backgroundTint="#A71B45"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/ic_add"
-            android:foregroundGravity="center"
-            android:layout_marginLeft="20dp"
             android:layout_height="44dp"
-            android:layout_gravity="center"/>
-    <EditText
-        android:id="@+id/phone_number"
-        android:layout_width="270dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="18dp"
-        android:background="@drawable/rounded_text"
-        android:drawablePadding="12dp"
-        android:hint="מספר חבילה או שם נמען"
-        android:inputType="text"
-        android:padding="7dp"
-        android:textColor="#040E69" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/circle_button"
+            android:backgroundTint="#A71B45"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_add" />
+
+        <EditText
+            android:id="@+id/phone_number"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rounded_text"
+            android:drawablePadding="12dp"
+            android:hint="מספר חבילה או שם נמען"
+            android:inputType="text"
+            android:padding="7dp"
+            android:textColor="#040E69" />
 
     </LinearLayout>
 
-<androidx.recyclerview.widget.RecyclerView
+
+    <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/parcelsList"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -213,13 +213,14 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
     }
     private Parcel getParcel()
     {
+
         Parcel p=new Parcel();
         p.setDistributionCenterAddress(address.getText().toString());
         if(breakable.getSelectedItem().toString().equals("תוכן החבילה שביר"))
             p.setFragile(true);
         else
             p.setFragile(false);
-        p.setRecipientAddress("ישעיהו הנביא");
+        p.setRecipientAddress(FirstFragment.addressee.getText().toString());
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -244,6 +245,7 @@ public class SecondFragment extends Fragment implements AdapterView.OnItemSelect
 
     private void addParcel() {
         try {
+
             Firebase_DBManager.addParcel(getParcel(), new Action<String>()
         {
                 @Override

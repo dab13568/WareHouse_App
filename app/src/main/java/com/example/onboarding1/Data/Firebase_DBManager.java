@@ -2,6 +2,7 @@ package com.example.onboarding1.Data;
 
 import androidx.annotation.NonNull;
 
+import com.example.onboarding1.MainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.ChildEventListener;
@@ -45,6 +46,12 @@ public class Firebase_DBManager {
             }
         });
     }
+
+
+
+
+
+
 
     public static void removeParcel(String parcelid, final Action<String> action) {
         final String key = parcelid;
@@ -119,8 +126,8 @@ public class Firebase_DBManager {
                                 break;
                             }
                         }
-
                         */
+
                         if (flag)
                             parcelList.add(parcel);
                     }
@@ -149,15 +156,16 @@ public class Firebase_DBManager {
 
                 @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {
-                    Parcel parcel = dataSnapshot.getValue(Parcel.class);
-                    String parcelid = dataSnapshot.getKey();
+                    //Parcel parcel = dataSnapshot.child(id).getValue(Parcel.class);
+                    String parcelid = dataSnapshot.child(dataSnapshot.getKey()).getKey();
 
                     for (int i = 0; i < parcelList.size(); i++) {
-                        if (parcelList.get(i).getParcelId() == parcelid) {
+                        if (parcelList.get(i).getRecipientPhoneNumber().equals( parcelid)) {
                             parcelList.remove(i);
                             break;
                         }
                     }
+
                     notifyDataChange.OnDataChanged(parcelList);
                 }
 
