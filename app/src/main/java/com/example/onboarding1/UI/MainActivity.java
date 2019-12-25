@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Region;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -187,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //represent the information in every card in the recycle view
     class ParcelViewHolder extends RecyclerView.ViewHolder
     {
         TextView nameTextView;
@@ -237,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //check if there is connection to internet, if there isn't so matching activity will appear.
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

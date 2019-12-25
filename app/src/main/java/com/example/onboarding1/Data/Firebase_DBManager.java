@@ -101,8 +101,7 @@ public class Firebase_DBManager {
         });
     }
 
-
-
+    //setting the listener to the changes.
     private static ChildEventListener parcelRefChildEventListener;
     public static void notifyToParcelList(final NotifyDataChange<List<Parcel>> notifyDataChange) {
         if (notifyDataChange != null) {
@@ -181,7 +180,7 @@ public class Firebase_DBManager {
             parcelsRef.addChildEventListener(parcelRefChildEventListener);
         }
     }
-
+    //stop the listener to the changes in the parcels list.
     public static void stopNotifyToParcelList() {
         if (parcelRefChildEventListener != null) {
             parcelsRef.removeEventListener(parcelRefChildEventListener);
