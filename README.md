@@ -7,7 +7,7 @@
 <h2 dir="rtl" id="מסך-ראשי">מסך ראשי</h2>
 <p dir="rtl">המסך הראשי מציג את החבילות שבמאגר.<br>
 .יש אפשרות לחיפוש בין החבילות ע"פ שם,כתובת ומספר טלפון.</p>
-<p><img src="https://github.com/shlomichi1351/WareHouse_App/blob/master/%D7%9E%D7%A1%D7%9A%20%D7%A8%D7%90%D7%A9%D7%99.jpg?raw=true" alt="מסך ראשי"></p>
+<p dir="rtl"><img src="https://github.com/shlomichi1351/WareHouse_App/blob/master/%D7%9E%D7%A1%D7%9A%20%D7%A8%D7%90%D7%A9%D7%99.jpg?raw=true" alt="מסך ראשי"></p>
 <p dir="rtl">במידה ואין אינטרנט אז בפתיחת האפליקצייה נקבל:<br>
 <img src="https://github.com/shlomichi1351/WareHouse_App/blob/master/%D7%90%D7%99%D7%9F_%D7%90%D7%99%D7%A0%D7%98%D7%A8%D7%A0%D7%98.jpg?raw=true" alt="אין אינטרנט"></p>
 <h2 dir="rtl" id="מסך-הוספת-חבילה-ראשון">מסך הוספת חבילה ראשון</h2>
