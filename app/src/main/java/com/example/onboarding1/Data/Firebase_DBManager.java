@@ -136,6 +136,46 @@ public class Firebase_DBManager {
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
+                    int toRemove = -1;
+
+                    for (int i = 0; i < parcelList.size(); i++) {
+                        int parcelAmount = (int)dataSnapshot.getChildrenCount();
+                        if (toRemove != -1)
+                            break;
+
+                        for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()){
+                            Parcel parcel = uniqueKeySnapshot.getValue(Parcel.class);
+                            parcelAmount--;
+
+                            if (parcelList.get(i).getParcelId().equals(parcel.getParcelId()))
+                                break;
+                            else if (parcelAmount == 0)
+                                toRemove = i;
+                        }
+                    }
+
+                    if (toRemove != -1)
+                        parcelList.remove(toRemove);
+                    else {
+                        for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
+                            Parcel parcelAdd = uniqueKeySnapshot.getValue(Parcel.class);
+                            boolean flag = true;
+                            for (int i = 0; i < parcelList.size(); i++) {
+                                if (parcelList.get(i).getParcelId().equals(parcelAdd.getParcelId())) {
+                                    parcelList.set(i, parcelAdd);
+                                    flag = false;
+                                    break;
+                                }
+                            }
+                            if (flag)
+                                parcelList.add(parcelAdd);
+                        }
+                    }
+
+                    notifyDataChange.OnDataChanged(parcelList);
+
+
+                    /*
                     for (DataSnapshot uniqueKeySnapshot : dataSnapshot.getChildren()) {
                         Parcel parcel = uniqueKeySnapshot.getValue(Parcel.class);
                         boolean flag = true;
@@ -151,7 +191,12 @@ public class Firebase_DBManager {
                     }
 
                     notifyDataChange.OnDataChanged(parcelList);
+                */
+
+
+
                 }
+
 
                 @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {
